@@ -1,11 +1,16 @@
 # This function generates the plot Global Active Power (kilowatts)
+# The plot1() function needs to be executed which will generate the plot1.png file of width 480px & height 480 px
 plot1 <- function(){
   
   houseHoldData <- electricPowerConsumption()
   
+  # Create the plot
+  png("plot1.png", width=480, height=480, units="px")
+  
   ## Create the histogram
   hist(houseHoldData$Global_active_power, main="Global Active Power", xlab = "Global Active Power (kilowatts)", col="red")
   
+  dev.off()
 }
 
 

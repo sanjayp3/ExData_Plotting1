@@ -1,15 +1,17 @@
 # This function generates the plot Global Active Power (kilowatts) ~ dateTime
+# You have to run the plot2() function which will generate plot2.png of width 480 px & height 480 px
 plot2 <- function(){
   
   houseHoldData <- electricPowerConsumption()
   
+  # Create the plot
+  png("plot2.png", width=480, height=480, units="px")
   plot(houseHoldData$Global_active_power~houseHoldData$dateTime, type="l", ylab="Global Active Power (kilowatts)", xlab="")
-  
+  dev.off()
 }
 
 # This function reads the household_power_consumption.txt , date column is converted to Date object, removed the missing data etc
 electricPowerConsumption <- function(){
-  
   
   houseHoldData <- read.table("household_power_consumption.txt", header=TRUE, sep=";", na.strings = "?", colClasses = c('character','character','numeric','numeric','numeric','numeric','numeric','numeric','numeric'))
   

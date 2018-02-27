@@ -1,9 +1,14 @@
 # This function creates 4 plots & displays in 2 rows , 2 cols
+# You have to run the plot4() function which will generate plot4.png of width 480 px & height 480 px
 plot4 <- function(){
   
   houseHoldData <- electricPowerConsumption()
   
+  # Create the plot
+  png("plot4.png", width=480, height=480, units="px")
+  
   par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
+  
   with(houseHoldData, {
     plot(Global_active_power~dateTime, type="l", 
          ylab="Global Active Power (kilowatts)", xlab="")
@@ -23,6 +28,8 @@ plot4 <- function(){
     plot(Global_reactive_power~dateTime, type="l", 
          ylab="Global_Rective_Power",xlab="datetime")
   })
+  
+  dev.off()
   
 }
 

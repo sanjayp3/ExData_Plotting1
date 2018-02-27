@@ -1,8 +1,11 @@
-
 # This function generates the plot Sub_metering_1~dateTime and add legend at top right
+# You have to run the plot3() function which will generate plot3.png of width 480 px & height 480 px
 plot3 <- function(){
   
   houseHoldData <- electricPowerConsumption()
+  
+  # Create the plot
+  png("plot3.png", width=480, height=480, units="px")
   
   with(houseHoldData, {
     plot(Sub_metering_1~dateTime, type="l",
@@ -12,7 +15,7 @@ plot3 <- function(){
   })
   legend("topright", col=c("black", "red", "blue"), lwd=c(1,1,1), 
          c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-  
+  dev.off()
 }
 
 # This function reads the household_power_consumption.txt , date column is converted to Date object, removed the missing data etc
